@@ -106,8 +106,65 @@ An atom $A$ is a subset of $Cl(\phi)$ such that
    \text{ then } \psi_1 U \psi_2 \in A.
 \end{aligned}
 \]
-
-
 \end{definition}
+
+\begin{lemma}
+
+For any atom $A$ there exists an atom $B$ s.t. $A R_x B$.
+
+\begin{proof}
+    Assume $A$ is an atom. Then we define $B$ as follows: 
+    \[
+        B = \{ \phi \mid X \phi \in A\} \cup \{ \neg \phi \mid \neg X \phi \in A\} \cup \{\psi_1 U \psi_2 \mid \psi_1 U \psi_2, \neg \psi_2 \in A\}
+        \cup \{   \neg(\psi_1 U \psi_2) \mid \neg(\psi_1 U \psi_2), \psi_1 \in A  \}
+    \] 
+
+    Now we show that $B$ is consistent. Assume it is not. Then there exists $\alpha_1,..., \alpha_n$ s.t.
+    $B \vdash \alpha_1 \land \alpha_2 ... \land \alpha_n \rightarrow \bot$. 
+    Let's define $\hat{B} = \bigwedge B$. It follows:
+    \[
+        \begin{array}{rll} 
+            & \vdash \hat{B} \land \alpha_1 \land ... \land\alpha_n  \rightarrow \bot \\
+            & \vdash X(\hat{B} \land \alpha_1 \land ... \land\alpha_n  \rightarrow \bot )
+            & \text{By X-necessitation} \\
+            & \vdash X(\hat{B} \land \alpha_1 \land ... \land\alpha_n ) \rightarrow X \bot
+            & \text{F2} \\
+            & \vdash X(\hat{B}) \land X\alpha_1 \land ... \land X\alpha_n \rightarrow X \bot \\
+        \end{array}
+    \]
+
+    Assume, $a_i = \phi$. Then by definition we have $A \vdash Xa_i$. If $a_i = \neg \phi$, then
+    we can use F1 to obtain $A \vdash X \neg \phi$. If $a_i = \psi_1 U \psi_2$ then 
+    by definition, $\psi_1 U \psi_2 \in A$ and $\neg \psi_2 \in A$. Consider the following proof steps:
+
+       \[
+        \begin{array}{rll} 
+            & A \vdash \neg \psi_2 \\
+            & A \vdash \psi_1 U \psi_2 \\
+            & A \vdash \psi_1 U \psi_2 \land \neg \psi_2 \\
+            & A \vdash \psi_1 U \psi_2 \land \neg \psi_2 \rightarrow (\psi_2 \lor (\psi_1 \land X ( \psi_1 U \psi_2 ))) \land \neg \psi_2 
+            & \text{Unfolding U} \\
+            & A \vdash  \psi_1 U \psi_2 \land \neg \psi_2 \rightarrow (\psi_1 \land X(\psi_1 U \psi_2))
+            & \text{distributivity and other rules} \\
+            & A \vdash \psi_1 \land X(\psi_1 U \psi_2) \\
+            & A \vdash X(\psi_1 U \psi_2).
+
+        \end{array}
+        \]
+
+        Hence, $A \vdash Xa_i$. By similar argument, we can conclude $A \vdash X\hat{B}$. So it follows 
+        \[
+            A \vdash X\bot
+        \] 
+        Because $X \bot \rightarrow \bot$ is a tautology, we conclude $A \vdash \bot$ which is a contradiction.
+        
+
+
+
+
+\end{proof}
+
+\end{lemma}
+
 
 \end{document}

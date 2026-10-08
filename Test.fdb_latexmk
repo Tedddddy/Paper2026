@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber Test"] 0 "Test.bcf" "Test.bbl" "Test" 1791061075.19084 -1
+["biber Test"] 0 "Test.bcf" "Test.bbl" "Test" 1791479178.42369 -1
   "D:/Miktex/bibtex/bib/feupphdteses/references.bib" 1366811700 2206 985e03fb36d872d306e76cfacc160693 ""
-  "Test.bcf" 1791061074 108186 cb7a0f543b491dd89072c265f5947d29 "pdflatex"
+  "Test.bcf" 1791479177 108186 cb7a0f543b491dd89072c265f5947d29 "pdflatex"
   (generated)
   "Test.bbl"
   "Test.blg"
   (rewritten before read)
-["pdflatex"] 1791061072.0379 "d:/Paper2026/Test.tex" "Test.pdf" "Test" 1791061075.1928 0
+["pdflatex"] 1791479175.41923 "d:/Paper2026/Test.tex" "Test.pdf" "Test" 1791479178.42536 0
   "C:/Users/Maik/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1786319053 145173 af14d0f35d9a1b8dde294b96519dd408 ""
   "C:/Users/Maik/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs10.tfm" 1770313344 688 37338d6ab346c2f1466b29e195316aa4 ""
   "C:/Users/Maik/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs5.tfm" 1786320469 684 3a51bd4fd9600428d5264cf25f04bb9a ""
@@ -28,12 +28,15 @@
   "D:/Miktex/fonts/tfm/public/cm/cmsy10.tfm" 1136765053 1124 6c73e740cf17375f03eec0ee63599741 ""
   "D:/Miktex/fonts/tfm/public/cm/cmsy6.tfm" 1136765053 1116 933a60c408fc0a863a92debe84b2d294 ""
   "D:/Miktex/fonts/tfm/public/cm/cmsy8.tfm" 1136765053 1120 8b7d695260f3cff42e636090a8002094 ""
+  "D:/Miktex/fonts/tfm/public/cm/cmti10.tfm" 1136765053 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
   "D:/Miktex/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1247596666 34811 78b52f49e893bcba91bd7581cdc144c0 ""
+  "D:/Miktex/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1247596667 30251 6afa5cb1d0204815a708a080681d4674 ""
   "D:/Miktex/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "D:/Miktex/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1247596666 35469 dcf3a5f2fc1862f5952e3ee5eb1d98c4 ""
   "D:/Miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "D:/Miktex/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1247596667 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "D:/Miktex/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "D:/Miktex/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1247596667 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "D:/Miktex/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "D:/Miktex/tex/generic/atbegshi/atbegshi.sty" 1575571100 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "D:/Miktex/tex/generic/bigintcalc/bigintcalc.sty" 1576433602 40635 c40361e206be584d448876bba8a64a3b ""
@@ -188,12 +191,12 @@
   "D:/Miktex/tex/latex/tools/calc.sty" 1748713680 10374 2ffd4f27c7f90b8a300608069537743c ""
   "D:/Miktex/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "D:/Miktex/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "Test.aux" 1791061074 279 a0970732b293e32af8af2d0810dd9935 "pdflatex"
-  "Test.bbl" 1791057899 486 76d65a242ec496c9b4361af646ff12cb "biber Test"
-  "Test.out" 1791061074 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "Test.run.xml" 1791061074 2311 fc0433bd7d9de9a30d9cf5613e0d296a "pdflatex"
-  "Test.tex" 1791061070 2987 93739ff3480aab2070c08e8d6add726f ""
-  "d:/Paper2026/Test.tex" 1791061070 2987 93739ff3480aab2070c08e8d6add726f ""
+  "Test.aux" 1791479177 279 87c28cfddf50c58ee4247ae76b80ffc7 "pdflatex"
+  "Test.bbl" 1791420764 486 76d65a242ec496c9b4361af646ff12cb "biber Test"
+  "Test.out" 1791479177 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "Test.run.xml" 1791479177 2311 fc0433bd7d9de9a30d9cf5613e0d296a "pdflatex"
+  "Test.tex" 1791479174 5414 742740ad44fd16ec95d82b45c3e79c17 ""
+  "d:/Paper2026/Test.tex" 1791479174 5414 742740ad44fd16ec95d82b45c3e79c17 ""
   (generated)
   "Test.aux"
   "Test.bcf"
