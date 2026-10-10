@@ -113,9 +113,9 @@ An atom $A$ is a subset of $Cl(\phi)$ such that
 For any atom $A$ there exists an atom $B$ s.t. $A R_x B$.
 
 \begin{proof}
-    Assume $A$ is an atom. Then we define $B$ as follows: 
+    Assume $A$ is an atom. Then we define $B'$ as follows: 
     \[
-        B = \{ \phi \mid X \phi \in A\} \cup \{ \neg \phi \mid \neg X \phi \in A\} \cup \{\psi_1 U \psi_2 \mid \psi_1 U \psi_2, \neg \psi_2 \in A\}
+        B' = \{ \phi \mid X \phi \in A\} \cup \{ \neg \phi \mid \neg X \phi \in A\} \cup \{\psi_1 U \psi_2 \mid \psi_1 U \psi_2, \neg \psi_2 \in A\}
         \cup \{   \neg(\psi_1 U \psi_2) \mid \neg(\psi_1 U \psi_2), \psi_1 \in A  \}
     \] 
 
@@ -152,11 +152,32 @@ For any atom $A$ there exists an atom $B$ s.t. $A R_x B$.
         \end{array}
         \]
 
-        Hence, $A \vdash Xa_i$. By similar argument, we can conclude $A \vdash X\hat{B}$. So it follows 
+        Hence, $A \vdash Xa_i$. If $a_i = \neg (\psi_1 U \psi_2)$, then by
+        definition, $\neg(\psi_1 U \psi_2), \psi_1 \in A.$ Our goal is to derive
+        $A \vdash \neg(\psi_1 U \psi_2) \land \psi_1 \rightarrow X \neg (\psi_1 U \psi_2)$.
+
+        \[
+        \begin{array}{rll} 
+                & A \vdash \neg(\psi_1 U \psi_2) \land \psi_1 \\
+                & A \vdash \neg(\psi_2 \lor (\psi_1 \land X(\psi_1 U \psi_2))) \land \psi_1
+                & \text{Unfolding U} \\
+                & A \vdash \neg \psi_2 \land (\neg \psi_1 \lor \neg X(\psi_1 U \psi_2)) \land \psi_1 \\
+                & A \vdash \neg \psi_1 \lor \neg X(\psi_1 U \psi_2) \\
+                & \neg X (\psi_1 U \psi_2) 
+                & \text{$\psi_1$ is derivable} \\
+                & A \vdash X \neg (\psi_1 U \psi_2) 
+                & \text{F1}
+
+        \end{array}
+        \]
+
+        
+        By similar argument, we can conclude $A \vdash X\hat{B}$. So it follows 
         \[
             A \vdash X\bot
         \] 
-        Because $X \bot \rightarrow \bot$ is a tautology, we conclude $A \vdash \bot$ which is a contradiction.
+        Because $X \bot \rightarrow \bot$ is a tautology, we conclude $A \vdash \bot$ which is a contradiction. 
+        Now, by the Extension Lemma, we can extend $B'$ to an atom $B$. It is easy to check, that $A R_x B$.
         
 
 
