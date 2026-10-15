@@ -180,11 +180,31 @@ For any atom $A$ there exists an atom $B$ s.t. $A R_x B$.
         Now, by the Extension Lemma, we can extend $B'$ to an atom $B$. It is easy to check, that $A R_x B$.
         
 
-
-
-
 \end{proof}
 
+\end{lemma}
+
+\begin{lemma}
+    Let $\Gamma = \{\phi\}'$ be a consistent set of formulas. Then $\Gamma'$ can be extended to an atom.
+
+    \begin{proof}
+        Let $n = |CL(\phi)|$ and consider the enumeration $\psi_1, \psi_2,..., \psi_n$ of $CL(\phi)$.
+        We define $\Gamma_0 = \{\phi\} $ and then inductively \[
+\Gamma_{n+1} :=
+\begin{cases}
+    \Gamma_{n} \cup \psi_{n+1},  & \text{if } \Gamma_{n} \cup \psi_{n+1} \text{ is consistent}, \\
+    \Gamma_{n} \cup \neg \psi_{n+1}, & \text{else }.
+\end{cases}
+\]
+Then $\Gamma^+ = \bigcup_{n}^{} \Gamma_n$ is our atom. Idea: Show for each $\Gamma_n$ is consistent for each $n$.
+
+
+    \end{proof}
+\end{lemma}
+
+\begin{lemma}
+    Assume $\psi_1 U \psi_2 \in A_i$. Then there is an $n \in \mathbb{N}$ with $A_i R_x A_{i+1} R_x ...R_x A_n$ s.t.
+    $\psi_2 \in A_n $ and $for \, all  \,i \leq j < n: \psi_1 \in A_j$.
 \end{lemma}
 
 
