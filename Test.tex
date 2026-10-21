@@ -207,5 +207,16 @@ Then $\Gamma^+ = \bigcup_{n}^{} \Gamma_n$ is our atom. Idea: Show for each $\Gam
     $\psi_2 \in A_n $ and $for \, all  \,i \leq j < n: \psi_1 \in A_j$.
 \end{lemma}
 
+\begin{definition}
+    Let $i \in \mathbb{N}$. We say an atom is admissible if $\Gamma_a^i = \{\neg \psi \mid \neg \langle a \rangle \psi \in A_i\} \subseteq B$
+\end{definition}
+
+\begin{lemma}
+    Goal: Define Canonical Transistion System for agent a $(T_a = (W_a, R_a, Init, V))$ 
+    Step 1: Define Init for $T_a$. Step 2: Show $\langle a \rangle \phi \in A_i$ then there $\exists Init,B_1...B_i$ s.t.
+    $\phi \in B_i$ and each $B_k$ is admissible. Step 3: Define $T_a$. For every $\langle a \rangle \phi$ we take the path and add it to $T_a$. Step 4, prove
+    if $B_i$ is admissible then there exists some $B_{i+1}$ that is admissible.
+\end{lemma}
+
 
 \end{document}
