@@ -208,15 +208,79 @@ Then $\Gamma^+ = \bigcup_{n}^{} \Gamma_n$ is our atom. Idea: Show for each $\Gam
 \end{lemma}
 
 \begin{definition}
-    Let $i \in \mathbb{N}$. We say an atom is admissible if $\Gamma_a^i = \{\neg \psi \mid \neg \langle a \rangle \psi \in A_i\} \subseteq B$
+    Let $G_i$ be some global atom. We say an atom B is $G_i$-allowed if $G_i \vdash \neg \langle a \rangle \psi $  and $\psi \in Cl(\phi)$, then $\neg \psi \in B$
 \end{definition}
 
+
 \begin{lemma}
-    Goal: Define Canonical Transistion System for agent a $(T_a = (W_a, R_a, Init, V))$ 
-    Step 1: Define Init for $T_a$. Step 2: Show $\langle a \rangle \phi \in A_i$ then there $\exists Init,B_1...B_i$ s.t.
-    $\phi \in B_i$ and each $B_k$ is admissible. Step 3: Define $T_a$. For every $\langle a \rangle \phi$ we take the path and add it to $T_a$. Step 4, prove
-    if $B_i$ is admissible then there exists some $B_{i+1}$ that is admissible.
+        Assume a global path $G_0G_1...$, where $G_0$ is the initial state. Then for $\langle a \rangle \phi \in G_0$ we can find 
+        some $G_0$-admissible atom $A$ with $\langle a \rangle \phi \in A$.
 \end{lemma}
+
+Here we construct for each $\langle a \rangle \phi$ an intial state in $T_a$.
+
+But the idea doesnt work yet. The constructed $T_a$ could contain not allowed atoms anymore.
+\begin{definition}
+    
+    Assume a global path $G_0G_1...$ and some $A_0A_1...$ that is allowed w.r.t. to their position.
+    Then we define $(n, j, A_j ) R_a (n' ,j', A_k)$ iff $A_j R_x A_j'$, $j' = j+1$ and $n = n'$ where n and n' will be the 'ID' of the path
+    and j,j' are the atom positions in the global path s.t.  $A_j$ or $A_j'$ is allowed respectively.
+
+\end{definition}
+
+
+
+\begin{lemma}
+    Assume we have a global path $G_0A_1G_2...$. If $\langle a \rangle \phi \in A_i$ then there exists $A_0,A_1,...,A_i$ with 
+    $(0,A_0) R_a (1,A_1) ... R_a (i,A_i) $s.t. 
+     $\phi \in A_i$.
+\end{lemma}
+
+\begin{lemma}
+    Assume some path $A_0A_1...A_i$ in $T_a$ with $A_0 R_a A_1 ... R_a A_i$ s.t $\phi \in A_i$. Then there exists an infinite fulfilling extension s.t. it is allowed w.r.t to the global path.
+\end{lemma}
+
+
+
+\begin{lemma}
+    Assume the atom $A_0$. Then there exists an infinite fulfilling path that extends $A_0$, i.e.
+    there is some path $A_0A_1...$ with $A_i R_x A_{i+1}$ for all $i \in \mathbb{N}$ s.t.
+    for any $\psi_1 U \psi_2 \in A_i: $ there exists an $j \geq i $ s.t. $\psi_2 \in A_j$ and for all $i \leq k < j \, \psi_1 \in A_k$ 
+\end{lemma}
+
+\begin{lemma}
+    Assume some path $A_0...A_i$ in $T_a$ that is allowed. Then this path can be extended to an infinite allowing path $A_{i+1}A_{i+2}---$s.t. $\forall n \geq i \forall \psi_1 U \psi_2 \in A_n \exists j$ 
+    s.t. $\psi_2 \in A_j$ and $\forall i \leq k < j$: $\psi_1 \in A_k$. 
+\end{lemma}
+
+
+\begin{lemma}
+    Assume a global path $G_0G_1...$.  Then for any $\psi \in Cl(\phi)$:
+
+    $$  \psi \in G_i \mbox{ iff } ((G_iG_{i+1}...), (G_1...G_i)) \vDash \psi    $$
+
+    For every agent a, every $A_0A_1...$ path in $T_a$ and for any $\psi \in Cl(\phi)$:
+
+    $$ \psi \in A_i \mbox{ iff } ((A_iA_{i+1}...), (A_1...A_i)) \vDash \psi    $$
+
+    \begin{proof}
+        We show both on double induction on the length of $\phi$. We first prove the global case.
+        Assume $\phi = p$. We define the truth on each atom to be $L(G_i) = \{p \mid p \in G_i\}$.
+        Then it follows: $$p \in G_i \iff p \in L(G_i) \iff (G_i...G_\infty, G_0...G_i) \vDash p$$. If $\phi = \neg \psi$,
+        then we have: $$\neg \psi \in G_i \iff \psi \notin G_i \overset{\text{IH}}{\iff} (G_i...G_\infty, G_0...G_i) \nvDash \psi \iff (G_i...G_{\infty}, G_0...G_i) \vDash \neg\psi$$.
+        $\phi = \psi_1 \lor \psi_2$ is done analogously. Assume $\phi =X \psi \in G_i$. Then $X \phi \in G_i \iff \psi \in G_{i+1} \overset{\text{IH}}{\iff} 
+        (G_{i+1}...G_\infty, G_0...G_{i+1}) \vDash \psi  \iff (G_i...G_\infty, G_0... G_i) \vDash X \psi$.  \newline 
+        Next we deal with the Until case, so assume $\phi = \psi_1 U \psi_2$. We prove two directions.
+        If $\psi_1 U \psi_2 \in G_i$, then by construction of the global path there exists some $j \geq i$ s.t. $\psi_2 \in G_j$ and for all $i \leq k < j$: $\psi_1 \in G_k$. By IH, it follows
+        $(G_j...G_\infty, G_0...G_j) \vDash \psi_2$ and $(G_k...G_\infty, G_0...G_k) \vDash \psi_1$. Hence, $(G_i...G_\infty, G_0...G_i) \vDash \psi_1 U \psi_2$.
+        Now assume $(G_i...G_\infty, G_0...G_i) \vDash \psi_1 U \psi_2$. By the semantics that means there is some $j \geq i$ s.t. 
+        $(G_j...G_\infty, G_0...G_j) \vDash \psi_2$ and for all $i \leq k < j$: $(G_k...G_\infty, G_0...G_k) \vDash \psi_1$. Now IH gives us
+        $\psi_2 \in G_j$ and hence $\psi_1 U \psi_2 \in G_j$. Because $G_{j-1} R_x G_j$, and by IH $\psi_1 \in G_{j-1}$, we conclude $\psi_1 U \psi_2 \in G_{j-1}$. Applying this argument repeatedly, we get $\psi_1 U \psi_2 \in G_i$.
+
+
+
+    \end{proof}
+\end{lemma} 
 
 
 \end{document}
