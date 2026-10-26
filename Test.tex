@@ -207,17 +207,21 @@ Then $\Gamma^+ = \bigcup_{n}^{} \Gamma_n$ is our atom. Idea: Show for each $\Gam
     $\psi_2 \in A_n $ and $for \, all  \,i \leq j < n: \psi_1 \in A_j$.
 \end{lemma}
 
+
+\begin{lemma}
+    Assume the atom $A_0$. Then there exists an infinite fulfilling path that extends $A_0$, i.e.
+    there is some path $A_0A_1...$ with $A_i R_x A_{i+1}$ for all $i \in \mathbb{N}$ s.t.
+    for any $\psi_1 U \psi_2 \in A_i: $ there exists an $j \geq i $ s.t. $\psi_2 \in A_j$ and for all $i \leq k < j \, \psi_1 \in A_k$ 
+\end{lemma}
+
 \begin{definition}
-    Let $G_i$ be some global atom. We say an atom B is $G_i$-allowed if $G_i \vdash \neg \langle a \rangle \psi $  and $\psi \in Cl(\phi)$, then $\neg \psi \in B$
+    Let $G_i$ be some global atom. We say an atom A (that is in $T_a) $ is $G_i$-allowed if $G_i \vdash [a] \psi $  then $A \vdash \psi$
 \end{definition}
 
 
 \begin{lemma}
-        Assume a global path $G_0G_1...$, where $G_0$ is the initial state. Then for $\langle a \rangle \phi \in G_0$ we can find 
-        some $G_0$-admissible atom $A$ with $\langle a \rangle \phi \in A$.
+    For any $\langle a \rangle \phi \in G_i$, there exists an infinite allowed fulfilling path $A_0A_1...$with $\phi \in A_i$
 \end{lemma}
-
-Here we construct for each $\langle a \rangle \phi$ an intial state in $T_a$.
 
 But the idea doesnt work yet. The constructed $T_a$ could contain not allowed atoms anymore.
 \begin{definition}
@@ -229,43 +233,42 @@ But the idea doesnt work yet. The constructed $T_a$ could contain not allowed at
 \end{definition}
 
 
-
 \begin{lemma}
-    Assume we have a global path $G_0A_1G_2...$. If $\langle a \rangle \phi \in G_i$ then there exists $A_0,A_1,...,A_i$ that is allowed with
-     $A_0 R_x A_1 R_x...A_i$ s.t.$\phi \in A_i$.
-\end{lemma}
+    Assume agents a,b. Then from our system we can derive $\langle b \rangle \psi \rightarrow [a] \langle b \rangle \psi$.
 
-The idea we pursuing is that Lemma 11 gives us a finite path which we will equipped with an unique ID.
-That makes the paths disjoint. Each path will then be extended to an infinite f
+    \begin{proof}
+                \[
+        \begin{array}{rll} 
+                &  \vdash \neg(\psi_1 U \psi_2) \land \psi_1 \\
 
-\begin{lemma}
-    Assume some path $A_0A_1...A_i$ in $T_a$ with $A_0 R_a A_1 ... R_a A_i$ s.t $\phi \in A_i$. Then there exists an infinite fulfilling extension s.t. it is allowed w.r.t to the global path.
-\end{lemma}
-
-
-
-\begin{lemma}
-    Assume the atom $A_0$. Then there exists an infinite fulfilling path that extends $A_0$, i.e.
-    there is some path $A_0A_1...$ with $A_i R_x A_{i+1}$ for all $i \in \mathbb{N}$ s.t.
-    for any $\psi_1 U \psi_2 \in A_i: $ there exists an $j \geq i $ s.t. $\psi_2 \in A_j$ and for all $i \leq k < j \, \psi_1 \in A_k$ 
-\end{lemma}
-
-\begin{lemma}
-    For any $\langle a \rangle \phi \in G_i$, there exists an infinite allowed fulfilling path $A_0A_1...$with $\phi \in A_i$
-\end{lemma}
-
-
-\begin{lemma}
-    Assume some path $A_0...A_i$ in $T_a$ that is allowed. Then this path can be extended to an infinite allowing path $A_{i+1}A_{i+2}---$s.t. $\forall n \geq i \forall \psi_1 U \psi_2 \in A_n \exists j$ 
-    s.t. $\psi_2 \in A_j$ and $\forall i \leq k < j$: $\psi_1 \in A_k$. 
+        \end{array}
+        \]
+    \end{proof}
 \end{lemma}
 
 \begin{lemma}
     Assume some allowed path $A_0A_1...$ in $T_a$ w.r.t. $G_0G_1...$. Then $\forall a,b \, \forall A_i$: $\langle b \rangle \psi \in A_i \iff \langle b \rangle \psi \in G_i$. 
     \begin{proof}
         
-        Assume $\langle b \rangle \psi$. Then it holds that $G_i $
+        Assume $\langle b \rangle \psi \in G_i$.
+        \[
+                \begin{array}{rll} 
+                &  \vdash& \langle a \rangle \langle b \rangle \psi \rightarrow \langle b \rangle \psi \\
+                &  \vdash &[a](\langle a \rangle \langle b \rangle \psi \rightarrow \langle b \rangle \psi) \\
+                &  \vdash &[a] \langle a \rangle \langle b \rangle \psi \rightarrow [a] \langle b \rangle \psi \\
+                G_i &\vdash& \langle a \rangle \langle b \rangle \psi \\
+                G_i &\vdash & [a] \langle a \rangle \langle b \rangle \psi \\
+                G_i &\vdash& [a] \langle b \rangle \psi
 
+        \end{array}
+        \]
+        
+        
+        By the allowed definition we conclude $A_i \vdash \langle b \rangle \psi$ and hence $\langle b \rangle \psi \in A_i$.
+        Conversly, assume $\langle b \rangle \psi \in A_i$ and $\neg \langle b \rangle \psi \in G_i$.
+        By axiom $\langle a \rangle \langle b \rangle \psi \leftrightarrow \langle b \rangle \psi$ we have $G_i \vdash \neg \langle b \rangle \rightarrow \neg \langle a \rangle \langle b \rangle \psi$.
+        But the derived formula is the same as $\neg \langle b \rangle \rightarrow [a] \neg \langle b \rangle \psi$,
+        and hence $G_i \vdash [a] \neg \langle b \rangle \psi$. By allowed definition it follows $A_i \vdash \neg \langle b \rangle \psi$ which is a contradiction.
     \end{proof}
 \end{lemma}
 
