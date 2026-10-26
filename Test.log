@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.14)  25 OCT 2026 18:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.14)  26 OCT 2026 12:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -882,20 +882,27 @@ Overfull \hbox (32.22153pt too wide) in paragraph at lines 206--208
 
 
 [2]
-Overfull \hbox (30.96834pt too wide) detected at line 270
+
+[3]
+Overfull \hbox (30.96834pt too wide) detected at line 281
 \OMS/cmsy/m/n/10.95 :\OML/cmm/m/it/10.95   \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 G[]  \OMS/cmsy/m/n/10.95 ([])  \OML/cmm/m/it/10.95   [] G[] [] \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 G[]:::G[]; G[]:::G[]\OT1/cmr/m/n/10.95 ) \U/msb/m/n/10.95 2 \OML/cmm/m/it/10.95    \OMS/cmsy/m/n/10.95 ([])  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 G[]:::G[]; G[]:::G[]\OT1/cmr/m/n/10.95 ) \U/msa/m/n/10.95 ^^O \OMS/cmsy/m/n/10.95 :\OML/cmm/m/it/10.95  
  []
 
 
-
-[3]
-Overfull \hbox (17.47604pt too wide) in paragraph at lines 270--279
+Overfull \hbox (17.47604pt too wide) in paragraph at lines 281--294
 \OML/cmm/m/it/10.95 G[]  \OMS/cmsy/m/n/10.95 ([])  \OML/cmm/m/it/10.95   \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 G[] [] \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 G[]:::G[]; G[]:::G[]\OT1/cmr/m/n/10.95 ) \U/msa/m/n/10.95 ^^O \OML/cmm/m/it/10.95    \OMS/cmsy/m/n/10.95 ([])  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 G[]:::G[]; G[]:::G[]\OT1/cmr/m/n/10.95 ) \U/msa/m/n/10.95 ^^O
  []
 
 
+Overfull \hbox (13.18892pt too wide) in paragraph at lines 281--294
+\OT1/cmr/m/n/10.95 But that also means $(\OML/cmm/m/it/10.95 G[]:::G[]; G[]:::G[]\OT1/cmr/m/n/10.95 ) \U/msa/m/n/10.95 ^^O \OMS/cmsy/m/n/10.95 h\OML/cmm/m/it/10.95 a\OMS/cmsy/m/n/10.95 i\OML/cmm/m/it/10.95  $\OT1/cmr/m/n/10.95 . Con-ver-sly, if $\OML/cmm/m/it/10.95 G[]:::G[]; G[]:::G[] \U/msa/m/n/10.95 ^^O
+ []
 
-[4] (Test.aux)
+
+
+[4]
+
+[5] (Test.aux)
  ***********
 LaTeX2e <2025-06-01>
 L3 programming layer <2025-05-26>
@@ -907,17 +914,17 @@ Package logreq Info: Writing requests to 'Test.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32246 strings out of 468224
- 630495 string characters out of 5449790
+ 32249 strings out of 468224
+ 630521 string characters out of 5449790
  1488013 words of memory out of 5000000
  60296 multiletter control sequences out of 15000+600000
  633430 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,13n,91p,706b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <D:/Miktex/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Miktex/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Miktex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/Miktex/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Miktex/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Miktex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Miktex/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Miktex/fonts/type1/public/amsfonts/cm/cmti10.pfb><D:/Miktex/fonts/type1/public/amsfonts/symbols/msam10.pfb><D:/Miktex/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Test.pdf (4 pages, 146055 bytes).
+Output written on Test.pdf (5 pages, 148910 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
- 20 named destinations out of 1000 (max. 500000)
+ 106 PDF objects out of 1000 (max. 8388607)
+ 23 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
