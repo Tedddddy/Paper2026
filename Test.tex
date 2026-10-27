@@ -303,7 +303,10 @@ But the idea doesnt work yet. The constructed $T_a$ could contain not allowed at
 
         Next we proof the standpoint case. Here we only consider $\phi = \langle b \rangle \psi$ for some agent b. The other cases are similar. So let $\langle b \rangle \psi \in A_i$. Under the assumption that for all 
         $\langle b \rangle \psi \in A_i \iff \langle b \rangle G_i$ we have that $\langle b \rangle \psi \in G_i$. By Lemma 14 we can construct some $B_0B_1...$ s.t. $\psi \in B_i$. Applying IH gives us
-        $(B_i...B_\infty, B_0...B_i) \vDash \psi$. Hence, $(A_i...A_\infty,A_0...A_i) \vDash \langle b \rangle \psi$.
+        $(B_i...B_\infty, B_0...B_i) \vDash \psi$. Hence, $(A_i...A_\infty,A_0...A_i) \vDash \langle b \rangle \psi$. Conversly, assume $(A_i...A_\infty, A_0...A_i) \vDash \langle b \rangle \psi$. That means there exists some
+        there is some $B_0B_1...B_i$ s.t. $B_i...B_\infty, B_0...B_i \vDash \psi$. By IH, we conclude $\psi \in B_i$. By construction of $T_b$ we know that $B_i$ is $G_i$-allowed.
+        So we can conclude $\langle b \rangle \psi \in G_i$. Assume it would not. Then $G_i \vdash \neg \langle b \rangle \psi$ and hence $G_i \vdash [b] \neg \psi$. By the definition of allowed that means
+        $B_i \vdash \neg \psi$. But thats a contradiction. Finally, $\langle b \rangle \in A_i$ holds.
         
 
     \end{proof}
