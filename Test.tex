@@ -77,7 +77,7 @@
 \end{definition}
 
 \begin{definition}
-An atom $A$ is a subset of $Cl(\phi)$ such that
+An atom $A$ is a subset of $Cl(\phi)$ such that it is consistent that means $A \nvdash \bot$ and 
 \[
 \begin{aligned}
 &\text{if } \psi \in Cl(\phi),
@@ -91,6 +91,14 @@ An atom $A$ is a subset of $Cl(\phi)$ such that
 \end{aligned}
 \]
 \end{definition}
+
+\begin{lemma}
+    Assume $A_i \vdash \psi$ For some $\psi \in Cl(\phi)$. Then $\psi \in A_i$.
+
+    \begin{proof}
+        Assume $\psi \notin A_i$. That means $\psi \in A_i$. But then $A_i \vdash \psi$ and $A_i \vdash \neg \psi$ which is a contradiction.
+    \end{proof}
+\end{lemma}
 
 \begin{definition}
     We say two atoms $A,B$ are in relation $R_x (A R_x B)$ iff
