@@ -273,8 +273,63 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
     \]
 
     \begin{proof}
-        There are different reasons for $(C, C') \notin R_x$. First, there is a formula $X \psi \in Cl(\phi)$ s.t.
-        $X \psi \in C$ and $\psi \notin C'$, i.e., $\neg \psi \in C'$.
+        There are different reasons for $(C, D) \notin R_x$. First, there is a formula $X \psi \in Cl(\phi)$ s.t.
+        $X \psi \in C$ and $\psi \notin D$, i.e., $\neg \psi \in D$.
+
+        \[
+            \begin{array}{rll} 
+                    &  \vdash \hat{C} \rightarrow X \psi \\
+                    &  \vdash  \psi \rightarrow \neg \neg \psi \\
+                    &  \vdash X \psi \rightarrow X \, \neg \neg \psi 
+                    &  \text{X is monotonic + 2 } \\
+                    &  \vdash \hat{C} \rightarrow X \neg \neg \psi \\
+                    &  \vdash \hat{D} \rightarrow \neg \psi \\
+                    &  \vdash \neg \neg \psi \rightarrow \neg \hat{D} \\
+                    &  \vdash X \, \neg \neg \psi \rightarrow X \neg \hat{D} \\
+                    &  \hat{C} \rightarrow X \neg \hat{D}
+
+
+
+            \end{array}
+        \]
+
+        Second case is $X \psi \notin A$ i.e., $\neg X \in C$ but $\psi \in D$.
+
+                \[
+            \begin{array}{rll} 
+                    &  \vdash \hat{C} \rightarrow \neg X \psi \\
+                    &  \vdash  X \psi \leftrightarrow \neg X \psi \\
+                    &  \vdash \neg X \psi \rightarrow X \, \neg \psi \\
+                    &  \vdash \hat{C} \rightarrow X \neg \psi \\
+                    &  \vdash \hat{D} \rightarrow \psi \\
+                    &  \vdash \neg \psi \rightarrow \neg \hat{D } \\
+                    &  \vdash X \,\neg \psi \rightarrow X \neg \hat{D} \\
+                    &  \hat{C} \rightarrow X \neg \hat{D}
+
+
+            \end{array}
+        \]
+
+        Third, there is a formula $\psi_1 U \psi_2$ s.t. $\psi_1 U \psi_2, \neg \psi_2 \in A$ and $\neg(\psi_1 U \psi_2) \in B$
+
+                        \[
+            \begin{array}{rll} 
+                    &  \vdash \hat{C} \rightarrow (\psi_1 U \psi_2 \land \neg \psi_2) \\
+                    &  \vdash  \psi_1 U \psi_2 \leftrightarrow \psi_2 \lor (\psi_1 \land X(\psi_1 U \psi_2)) \\
+                    &  \vdash \hat{C} \rightarrow X (\psi_1 U \psi_2) \\
+                    &  \vdash \hat{D} \rightarrow \neg (\psi_1 U \psi_2) \\
+                    &  \vdash \neg \neg (\psi_1 U \psi_2) \rightarrow \neg \hat{B} \\
+                    &  \vdash \psi_1 U \psi_2 \rightarrow \neg \neg (\psi_1 U \psi_2) \\
+                    &  \vdash \psi_1 U \psi_2 \rightarrow X \neg \hat{D} \\
+                    &  X (\psi_1 U \psi_2) \rightarrow X \neg \hat{D} \\
+                    &  \hat{C} \rightarrow X \neg \hat{D}
+
+
+            \end{array}
+        \]
+
+        Last, we have $\psi_1 U \psi_2 \in D$, $\psi_1 \in C$ and $\psi_1 U \psi_2 \notin C$, i.e., $\neg(\psi_1 U \psi_2) \in C$.
+        From unraveling $\vdash \neg(\psi_1 U \psi_2) \rightarrow (\neg \psi_1 \lor \neg \, X(\psi_1 U \psi_2))$. Since $\vdash \hat{C} \rightarrow \neg X(\psi_1 U \psi_2)$
     \end{proof}
 \end{lemma}
 
@@ -358,6 +413,7 @@ But the idea doesnt work yet. The constructed $T_a$ could contain not allowed at
         there is some $B_0B_1...B_i$ s.t. $B_i...B_\infty, B_0...B_i \vDash \psi$. By IH, we conclude $\psi \in B_i$. By construction of $T_b$ we know that $B_i$ is $G_i$-allowed.
         So we can conclude $\langle b \rangle \psi \in G_i$. Assume it would not. Then $G_i \vdash \neg \langle b \rangle \psi$ and hence $G_i \vdash [b] \neg \psi$. By the definition of allowed that means
         $B_i \vdash \neg \psi$. But thats a contradiction. Finally, $\langle b \rangle \in A_i$ holds.
+        
         
 
     \end{proof}
