@@ -70,11 +70,13 @@
         Cl(\neg \phi) &= Cl(\phi) \\
         Cl(\phi \lor \psi) &= \{\phi \lor \psi, \neg(\phi \lor \psi)\} \cup  Cl(\phi) \cup Cl(\psi) \\
         Cl(X \phi) &= \{X \phi, \neg X \phi\} \cup Cl(\phi) \\
-        Cl(\phi U \psi) &= \{\phi U \psi, \neg(\phi U \psi)\} \cup Cl(\phi) \cup Cl(\psi) \\
+        Cl(\phi U \psi) &= \{\phi U \psi, \neg(\phi U \psi), true U  \langle a \rangle \psi, \neg (true U \langle a \rangle \psi)\} \cup Cl(\phi) \cup Cl(\psi) \\
         Cl(\langle a \rangle \phi) &= \{\langle a \rangle \phi, \neg \langle a \rangle \phi\} \cup Cl(\phi)
     \end{aligned}
 \]
 \end{definition}
+
+
 
 \begin{definition}
 An atom $A$ is a subset of $Cl(\phi)$ such that it is consistent that means $A \nvdash \bot$ and 
@@ -222,6 +224,61 @@ Then $\Gamma^+ = \bigcup_{n}^{} \Gamma_n$ is our atom. Idea: Show for each $\Gam
     for any $\psi_1 U \psi_2 \in A_i: $ there exists an $j \geq i $ s.t. $\psi_2 \in A_j$ and for all $i \leq k < j \, \psi_1 \in A_k$ 
 \end{lemma}
 
+Before proving that Lemma, we will prove some other useful lemmas. For that, let $\mathcal{C}$ be the set of all possible atoms. Note: this set 
+is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_{\psi \in C} \psi$.
+
+\begin{lemma}
+    We can derive the following: 
+    \[
+        \vdash \bigvee_{C \in \mathcal{C}} \hat{C}
+    \]
+
+
+    \begin{proof}
+        Result from Propositional Logic.
+    \end{proof}
+
+\end{lemma}
+
+\begin{lemma}
+    
+    Let $C$ be some atom. Then
+
+    \[
+        \vdash \hat{C} \rightarrow X(\bigvee_{A \in \mathcal{C}} \hat{A})
+    \]
+
+    \begin{proof}
+        
+                \[
+        \begin{array}{rll} 
+                &  \vdash \bigvee_{A \in \mathcal{C}} \hat{A} \\
+                &  \vdash \Box \bigvee_{A \in \mathcal{C}} \hat{A} \\
+                &  \vdash \Box X \bigvee_{A \in \mathcal{C}} \hat{A} \\
+                &  \vdash \hat{C} \rightarrow X (\bigvee_{A \in \mathcal{C}} \hat{A}) 
+                &  \text{$\Box \phi \rightarrow (\psi \rightarrow \phi)$ is a tautology}
+
+
+        \end{array}
+                \]
+
+    \end{proof}
+
+\end{lemma}
+
+\begin{lemma}
+    Let $C,D$ be some atoms such that $(C, D) \notin R_x$. Then
+    \[
+        \vdash \hat{C} \rightarrow X \neg \hat{D}
+    \]
+
+    \begin{proof}
+        There are different reasons for $(C, C') \notin R_x$. First, there is a formula $X \psi \in Cl(\phi)$ s.t.
+        $X \psi \in C$ and $\psi \notin C'$, i.e., $\neg \psi \in C'$.
+    \end{proof}
+\end{lemma}
+
+
 \begin{definition}
     Let $G_i$ be some global atom. We say an atom A (that is in $T_a) $ is $G_i$-allowed if $G_i \vdash [a] \psi $  then $A \vdash \psi$
 \end{definition}
@@ -239,20 +296,6 @@ But the idea doesnt work yet. The constructed $T_a$ could contain not allowed at
     and j,j' are the atom positions in the global path s.t.  $A_j$ or $A_j'$ are allowed respectively.
 
 \end{definition}
-
-
-\begin{lemma}
-    Assume agents a,b. Then from our system we can derive $\langle b \rangle \psi \rightarrow [a] \langle b \rangle \psi$.
-
-    \begin{proof}
-                \[
-        \begin{array}{rll} 
-                &  \vdash \neg(\psi_1 U \psi_2) \land \psi_1 \\
-
-        \end{array}
-        \]
-    \end{proof}
-\end{lemma}
 
 \begin{lemma}
     Assume some allowed path $A_0A_1...$ in $T_a$ w.r.t. $G_0G_1...$. Then $\forall a,b \, \forall A_i$: $\langle b \rangle \psi \in A_i \iff \langle b \rangle \psi \in G_i$. 
