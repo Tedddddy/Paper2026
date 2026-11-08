@@ -333,6 +333,34 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
     \end{proof}
 \end{lemma}
 
+\begin{lemma}
+    Let $C$ be some atom. Then
+    \[  
+        \vdash \hat{C} \rightarrow X (\bigvee_{D \in \mathcal{C} \text{ and } C R_x D} \hat{D})
+    \]
+
+    \begin{proof}
+        We define $\mathcal{C} = S \cup \bar{S}$ where $S = \{D \in \mathcal{C} \mid (C,D) \in R_x \}$ and $\bar{S} = \{D \in \mathcal{C} \mid  (C,D) \notin R_x\}$.
+        By Lemma 11 we have 
+        \[
+            \begin{array}{rll}
+                & \vdash \hat{C} \rightarrow \, \bigcirc (\bigvee_{D \in S} \hat{D} \lor \bigvee_{D \in \bar{S}} \hat{D})
+                &\text{Lemma 11} \\
+                & \vdash \hat{C} \rightarrow \bigwedge_{D \in \bar{S}} \bigcirc \, \neg \hat{D} 
+                &\text{Lemma 12} \\
+                & \vdash \hat{C} \rightarrow \bigcirc (\bigwedge_{D \in \bar{S}} \, \neg \hat{D}) 
+                & \text{$\bigcirc (\phi \land \psi) \leftrightarrow \bigcirc \phi \land \bigcirc \psi$} \\
+                & \vdash \hat{C} \rightarrow  \, \bigcirc (\bigvee_{D \in S} \hat{D} \lor \bigvee_{D \in \bar{S}} \hat{D}) \land
+                \bigcirc (\bigwedge_{D \in \bar{S}} \, \neg \hat{D}) \\
+                & \vdash \rightarrow \hat{C} \bigcirc  (\bigvee_{D \in S} \hat{D} \lor \bigvee_{D \in \bar{S}} \hat{D}) \land
+                (\bigwedge_{D \in \bar{S}} \, \neg \hat{D}))
+            \end{array}
+        \]
+
+
+    \end{proof}
+ \end{lemma}
+
 
 \begin{definition}
     Let $G_i$ be some global atom. We say an atom A (that is in $T_a) $ is $G_i$-allowed if $G_i \vdash [a] \psi $  then $A \vdash \psi$
