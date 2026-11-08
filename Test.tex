@@ -213,8 +213,8 @@ Then $\Gamma^+ = \bigcup_{n}^{} \Gamma_n$ is our atom. Idea: Show for each $\Gam
 \end{lemma}
 
 \begin{lemma}
-    Assume $\psi_1 U \psi_2 \in A_i$. Then there is an $n \in \mathbb{N}$ with $A_i R_x A_{i+1} R_x ...R_x A_n$ s.t.
-    $\psi_2 \in A_n $ and $for \, all  \,i \leq j < n: \psi_1 \in A_j$.
+    Assume $\psi_1 U \psi_2 \in G_i$. Then there is an $n \in \mathbb{N}$ with $G_i R_x G_{i+1} R_x ...R_x G_n$ s.t.
+    $\psi_2 \in G_n $ and $for \, all  \,i \leq j < n: \psi_1 \in G_j$.
 \end{lemma}
 
 
@@ -336,7 +336,7 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
 \begin{lemma}
     Let $C$ be some atom. Then
     \[  
-        \vdash \hat{C} \rightarrow X (\bigvee_{D \in \mathcal{C} \text{ and } C R_x D} \hat{D})
+        \vdash \hat{C} \rightarrow \bigcirc (\bigvee_{D \in \mathcal{C} \text{ and } C R_x D} \hat{D})
     \]
 
     \begin{proof}
@@ -352,14 +352,61 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
                 & \text{$\bigcirc (\phi \land \psi) \leftrightarrow \bigcirc \phi \land \bigcirc \psi$} \\
                 & \vdash \hat{C} \rightarrow  \, \bigcirc (\bigvee_{D \in S} \hat{D} \lor \bigvee_{D \in \bar{S}} \hat{D}) \land
                 \bigcirc (\bigwedge_{D \in \bar{S}} \, \neg \hat{D}) \\
-                & \vdash \rightarrow \hat{C} \bigcirc  (\bigvee_{D \in S} \hat{D} \lor \bigvee_{D \in \bar{S}} \hat{D}) \land
-                (\bigwedge_{D \in \bar{S}} \, \neg \hat{D}))
+                & \vdash \hat{C} \rightarrow  \bigcirc  ((\bigvee_{D \in S} \hat{D} \lor \bigvee_{D \in \bar{S}} \hat{D}) \land
+                (\bigwedge_{D \in \bar{S}} \, \neg \hat{D})) \\
+                & \vdash  ((\bigvee_{D \in S} \hat{D} \lor \bigvee_{D \in \bar{S}} \hat{D}) \land (\bigwedge_{D \in \bar{S}} \, \neg \hat{D})) \rightarrow \bigvee_{D \in S} \hat{D}  
+                & \text{Propositional logic} \\
+                & \vdash \bigcirc ((\bigvee_{D \in S} \hat{D} \lor \bigvee_{D \in \bar{S}} \hat{D}) \land (\bigwedge_{D \in \bar{S}} \, \neg \hat{D})) \rightarrow \bigcirc \bigvee_{D \in S} \hat{D}
+                & \text{$\bigcirc$ is monotonic} \\
+                & \vdash \hat{C} \rightarrow \bigcirc \bigvee_{D \in S} \hat{D}
+
             \end{array}
         \]
 
 
     \end{proof}
  \end{lemma}
+
+ Now we are ready to prove Lemma 9. 
+ \begin{proof}
+    Assume for contradiction that for all $n \geq i$ we have $\neg \psi_2 \in G_i$ or there is some $k$ within $i \leq k < n$ with $\neg \psi_1 \in G_k$.
+    Our goal is to derive $G_i \vdash \Box \neg \psi_2$ and with $\psi_1 U \psi_2 \in G_i$, we can derive $G_i \vdash \lozenge \psi_2$ which is contradiction. \newline
+    Let $\zeta = \bigvee_{C \in \Gamma} \hat{C}$ where $\Gamma$ is the set of all atoms $C$ s.t. $\neg \psi_2 \in C$ and $(G_i,C) \in R^*_x$. Consider the following derivations:
+
+    \[
+        \begin{array}{rll}
+            & \vdash \zeta \rightarrow \neg \psi_2 
+            &\text{Propositional logic} \\
+            & \vdash \zeta \rightarrow \bigcirc \zeta 
+            &\text{*} \\
+            & \vdash \zeta \rightarrow \Box \zeta 
+            &\text{Induction axiom} \\
+            &\vdash \zeta \rightarrow \Box \neg \psi_2
+        \end{array}
+    \]
+
+    It is left to show $*$. For that, assume some $C$ s.t. $(G_i,C) \in R^*_x$. For any $D$
+    that is a successor of $C$, we also have $(G_i,D) \in R^*_x$. Furthermore, for any atom $C $ in $\Gamma$ we have $\psi_1, \psi_1 U \psi_2 $ and $\neg \psi_2 \in C$.
+    To see that, consider $G_i$ first. By assumption we have $\psi_1 U \psi_2 \in G_i$. Assuming $\psi_2 \in G_i$ would contradicts our assumption. 
+    Hence, $\psi_1, \neg \psi_2 \in G_i$. Now consider an arbitrary successor of $G_i$ say $C$. By the conditions of the relation, we can conclude $\psi_1 U \psi_2 \in C$.
+    There are two cases: If $G_i = C$, then assuming $\psi_2 \in C$ gives a consistency contradiction and otherwise we have a contradiction to our assumption. We can reapplying this argument for any successor again.
+    Hence we derive the following: 
+
+    \[
+        \begin{array}{rll}
+            &\vdash (\bigvee_{D \in \mathcal{C}, (C,D) \in R_x, \neg \psi_2 \in D} \hat{D}) \rightarrow (\bigvee_{E \in \mathcal{C}, \, (G_i,E) \in R_x^*, \neg \psi_2 \in E} \hat{E}) \\
+            &\vdash \bigcirc (\bigvee_{D \in \mathcal{C}, (C,D) \in R_x, \neg \psi_2 \in D} \hat{D}) \rightarrow \bigcirc(\bigvee_{E \in \mathcal{C}, \, (G_i,E) \in R_x^*,\neg \psi_2 \in E} \hat{E})
+            &\text{$\bigcirc$ monotonocity} \\
+            &\vdash \hat{C} \rightarrow \bigcirc (\bigvee_{D \in \mathcal{C}, (C,D) \in R_x, \neg \psi_2 \in D} \hat{D}) 
+            &\text{Lemma 13 + }\ \neg \psi_2 \in D \\
+            &\vdash \hat{C} \rightarrow \bigcirc(\bigvee_{E \in \mathcal{C}, \, (G_i,E) \in R_x^*,\neg \psi_2 \in E} \hat{E}) \\
+            &\vdash \bigvee_{E \in \mathcal{C}, (G_i,E) \in R_x^*, \neg \psi_2 \in E} \hat{E} \rightarrow \bigcirc(\bigvee_{E \in \mathcal{C}, \, (G_i,E) \in R_x^*,\neg \psi_2 \in E} \hat{E}) 
+            &\text{C was chosen arbitrary}
+        \end{array}
+    \]
+ \end{proof}
+
+
 
 
 \begin{definition}
