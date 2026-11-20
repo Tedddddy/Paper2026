@@ -423,9 +423,11 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
     Assume some $\langle a \rangle \phi \in G_i$. Then there is some atom $A_i$ that is $G_i$-allowed and $\phi \in A_i$.
 
     \begin{proof}
-        First, it must be the case that ${\phi}$ is consistent. Otherwise, we could derive $\neg \phi$ and by $[a]$-generalization it follows $\vdash [a] \neg \phi$. Now we show $\Gamma_i = \{\phi\} \cup \{\psi \mid [a] \psi \in G_i\}$ is consistent.
-        For that we show the extended set $\Gamma_i' = \{\phi\} \cup \{\psi \in Bool(Cl(\phi)) \mid \ G_i\vdash [a]\psi\}$ is consistent. Suppose it is not. Then there exists some $\psi_1,...,\psi_n$ with 
-        $\vdash \psi_1 \land ... \land \psi_n \rightarrow \bot$. 
+        First, it must be the case that ${\phi}$ is consistent. Otherwise, we could derive $\neg \phi$ and by $[a]$-generalization it follows $\vdash [a] \neg \phi$. Now we show $A_i' = \{\phi\} \cup \{\psi \mid [a] \psi \in G_i\}$ is consistent.
+        For that we show the extended set $\Gamma_i = \{\phi\} \cup \{\psi \in Bool(Cl(\varphi)) \mid \ G_i\vdash [a]\psi\}$ is consistent. Suppose it is not. Then there exists some $\psi_1,...,\psi_n$ with 
+        $\vdash \psi_1 \land ... \land \psi_n \rightarrow \bot$. There are two cases. If $\phi$ does not occur, then by [a]-generalization $\vdash [a](\psi_1 \land ... \land \psi_n \rightarrow \bot)$ and hence $G_i \vdash [a] \bot$ and by D-axiom $G_i \vdash \langle a \rangle \bot$.
+        Otherwise $\phi$ occurs in the premise and we can derive $\vdash \psi_1 \land ... \land \psi_n \rightarrow \neg \phi$. But then we can conclude $G_i \vdash [a] \neg \phi$. That means $\Gamma_i'$ and also $A_i'$ are consistent because we have $A_i' \subseteq \Gamma_i$. \newline
+        Next, we use Lindenbaum's Lemma to extend $\Gamma_i$ to an maximal consistent set say $\Gamma_i'$. We define our atom as $A_i = \Gamma_i' \cap Cl(\varphi)$. This set is consistent and and atom. It is left to show that $A_i$ is $G_i$-allowed.
     \end{proof}
 
 \end{lemma}
