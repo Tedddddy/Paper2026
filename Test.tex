@@ -383,7 +383,7 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
             &\text{Induction axiom} \\
             &\vdash \zeta \rightarrow \Box \neg \psi_2
         \end{array}
-    \]
+    \]y
 
     It is left to show $*$. For that, assume some $C$ s.t. $(G_i,C) \in R^*_x$. For any $D$
     that is a successor of $C$, we also have $(G_i,D) \in R^*_x$. Furthermore, for any atom $C $ in $\Gamma$ we have $\psi_1, \psi_1 U \psi_2 $ and $\neg \psi_2 \in C$.
@@ -410,12 +410,24 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
 
 
 \begin{definition}
-    Let $G_i$ be some global atom. We say an atom A (that is in $T_a) $ is $G_i$-allowed if $G_i \vdash [a] \psi $  then $A \vdash \psi$
+    Let $G_i$ be some global atom. We say an atom A (that is in $T_a) $ is $G_i$-allowed if for any $\psi \in Cl(\phi)$ we have: $G_i \vdash [a] \psi $  then $\psi \in A_i$
 \end{definition}
+
 
 
 \begin{lemma}
     For any $\langle a \rangle \phi \in G_i$, there exists an infinite allowed fulfilling path $A_0A_1...$with $\phi \in A_i$
+\end{lemma}
+
+\begin{lemma}
+    Assume some $\langle a \rangle \phi \in G_i$. Then there is some atom $A_i$ that is $G_i$-allowed and $\phi \in A_i$.
+
+    \begin{proof}
+        First, it must be the case that ${\phi}$ is consistent. Otherwise, we could derive $\neg \phi$ and by $[a]$-generalization it follows $\vdash [a] \neg \phi$. Now we show $\Gamma_i = \{\phi\} \cup \{\psi \mid [a] \psi \in G_i\}$ is consistent.
+        For that we show the extended set $\Gamma_i' = \{\phi\} \cup \{\psi \in Bool(Cl(\phi)) \mid \ G_i\vdash [a]\psi\}$ is consistent. Suppose it is not. Then there exists some $\psi_1,...,\psi_n$ with 
+        $\vdash \psi_1 \land ... \land \psi_n \rightarrow \bot$. 
+    \end{proof}
+
 \end{lemma}
 
 But the idea doesnt work yet. The constructed $T_a$ could contain not allowed atoms anymore.
