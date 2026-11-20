@@ -70,7 +70,7 @@
         Cl(\neg \phi) &= Cl(\phi) \\
         Cl(\phi \lor \psi) &= \{\phi \lor \psi, \neg(\phi \lor \psi)\} \cup  Cl(\phi) \cup Cl(\psi) \\
         Cl(X \phi) &= \{X \phi, \neg X \phi\} \cup Cl(\phi) \\
-        Cl(\phi U \psi) &= \{\phi U \psi, \neg(\phi U \psi), true U  \langle a \rangle \psi, \neg (true U \langle a \rangle \psi)\} \cup Cl(\phi) \cup Cl(\psi) \\
+        Cl(\phi U \psi) &= \{\phi U \psi, \neg(\phi U \psi), \top U  \langle a \rangle \psi, \neg (\top U \langle a \rangle \psi), \top, \neg \top, \langle a \rangle \psi, \neg \langle a \rangle \psi\} \cup Cl(\phi) \cup Cl(\psi) \\
         Cl(\langle a \rangle \phi) &= \{\langle a \rangle \phi, \neg \langle a \rangle \phi\} \cup Cl(\phi)
     \end{aligned}
 \]
@@ -410,7 +410,8 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
 
 
 \begin{definition}
-    Let $G_i$ be some global atom. We say an atom A (that is in $T_a) $ is $G_i$-allowed if for any $\psi \in Cl(\phi)$ we have: $G_i \vdash [a] \psi $  then $\psi \in A_i$
+    Let $G_i$ be some global atom. We say an atom A (that is in $T_a) $ is $G_i$-allowed if for any $\psi \in 
+    Bool(Cl(\phi))$ we have: $G_i \vdash [a] \psi $  then $A_i \vdash \psi$
 \end{definition}
 
 
@@ -427,7 +428,14 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
         For that we show the extended set $\Gamma_i = \{\phi\} \cup \{\psi \in Bool(Cl(\varphi)) \mid \ G_i\vdash [a]\psi\}$ is consistent. Suppose it is not. Then there exists some $\psi_1,...,\psi_n$ with 
         $\vdash \psi_1 \land ... \land \psi_n \rightarrow \bot$. There are two cases. If $\phi$ does not occur, then by [a]-generalization $\vdash [a](\psi_1 \land ... \land \psi_n \rightarrow \bot)$ and hence $G_i \vdash [a] \bot$ and by D-axiom $G_i \vdash \langle a \rangle \bot$.
         Otherwise $\phi$ occurs in the premise and we can derive $\vdash \psi_1 \land ... \land \psi_n \rightarrow \neg \phi$. But then we can conclude $G_i \vdash [a] \neg \phi$. That means $\Gamma_i'$ and also $A_i'$ are consistent because we have $A_i' \subseteq \Gamma_i$. \newline
-        Next, we use Lindenbaum's Lemma to extend $\Gamma_i$ to an maximal consistent set say $\Gamma_i'$. We define our atom as $A_i = \Gamma_i' \cap Cl(\varphi)$. This set is consistent and and atom. It is left to show that $A_i$ is $G_i$-allowed.
+        Next, we use Lindenbaum's Lemma to extend $\Gamma_i$ to a maximal consistent set say $\Gamma_i'$. We define our atom as $A_i = \Gamma_i' \cap Cl(\varphi)$. This set is consistent and and atom with $A_i' \subseteq A_i$. It is left to show that $A_i$ is $G_i$-allowed.
+        Assume some $\psi \in Bool(Cl(\varphi))$ s.t. $G_i \vdash [a]\psi$. We observe that for $\psi \in Bool(Cl(\varphi))$ it holds that either 
+        $A_i \vdash \psi$ or $A_i \vdash \neg \psi$. The proof is by structural induction. For the base case $\psi$ must be in the $Cl(\varphi)$. Then we know that either $\psi$ or $\neg \psi$ is in $A_i$.
+        If $\psi = \neg \phi$ then there are two cases: If $A_i \vdash \neg \phi$, then $A_i \vdash \psi$. Otherwise, $A_i \vdash \phi$ and also $A_i \vdash \neg \neg \phi$ which is the same assume
+        $A_i \vdash \neg \psi$. If $\psi = \phi_1 \land \phi_2$ then there are two cases. If $A_i \vdash \phi_1$ and $A_i \vdash \phi_2$, then $A_i \vdash \phi_1 \land \phi_2$. Otherwise, $A_i \vdash \neg \phi_1$ or $A_i \vdash \neg \phi_2$. Then
+        $A_i \vdash \neg (\phi_1 \land \phi_2)$.
+        Now assume $A_i \nvdash \psi$. So $A_i \vdash \neg \psi$. That also means $\Gamma_i' \vdash \neg \psi$. But because $\Gamma_i \subseteq \Gamma_i'$, and by the definition of $Gamma_i$, we conclude $Gamma_i' \vdash \psi$, which is a contradiction.
+
     \end{proof}
 
 \end{lemma}
