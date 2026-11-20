@@ -1,9 +1,9 @@
-[0] Config.pm:307> INFO - This is Biber 2.17
-[1] Config.pm:310> INFO - Logfile is 'Test.blg'
-[137] biber:340> INFO - === Fr Nov 20, 2026, 15:30:22
-[163] Biber.pm:418> INFO - Reading 'Test.bcf'
-[295] Biber.pm:972> INFO - Found 0 citekeys in bib section 0
-[317] bbl.pm:654> INFO - Writing 'Test.bbl' with encoding 'UTF-8'
-[318] bbl.pm:757> INFO - Output to Test.bbl
-[318] Biber.pm:130> WARN - The file 'Test.bcf' does not contain any citations!
-[318] Biber.pm:132> INFO - WARNINGS: 1
+[1] Config.pm:307> INFO - This is Biber 2.17
+[5] Config.pm:310> INFO - Logfile is 'Test.blg'
+[227] biber:340> INFO - === Fr Nov 20, 2026, 16:12:16
+[255] Biber.pm:418> INFO - Reading 'Test.bcf'
+[376] Biber.pm:972> INFO - Found 0 citekeys in bib section 0
+[399] bbl.pm:654> INFO - Writing 'Test.bbl' with encoding 'UTF-8'
+[399] bbl.pm:757> INFO - Output to Test.bbl
+[400] Biber.pm:130> WARN - The file 'Test.bcf' does not contain any citations!
+[400] Biber.pm:132> INFO - WARNINGS: 1

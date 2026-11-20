@@ -70,7 +70,8 @@
         Cl(\neg \phi) &= Cl(\phi) \\
         Cl(\phi \lor \psi) &= \{\phi \lor \psi, \neg(\phi \lor \psi)\} \cup  Cl(\phi) \cup Cl(\psi) \\
         Cl(X \phi) &= \{X \phi, \neg X \phi\} \cup Cl(\phi) \\
-        Cl(\phi U \psi) &= \{\phi U \psi, \neg(\phi U \psi), \top U  \langle a \rangle \psi, \neg (\top U \langle a \rangle \psi), \top, \neg \top, \langle a \rangle \psi, \neg \langle a \rangle \psi\} \cup Cl(\phi) \cup Cl(\psi) \\
+        Cl(\phi U \psi) &= \{\phi U \psi, \neg(\phi U \psi), \top U  \langle a \rangle \psi, \neg (\top U \langle a \rangle \psi), \top, \neg \top, \langle a \rangle \psi, \neg \langle a \rangle \psi
+        \bigcirc (\phi U \psi), \neg \bigcirc (\phi U \psi)\} \cup Cl(\phi) \cup Cl(\psi) \\
         Cl(\langle a \rangle \phi) &= \{\langle a \rangle \phi, \neg \langle a \rangle \phi\} \cup Cl(\phi)
     \end{aligned}
 \]
@@ -434,13 +435,22 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
         If $\psi = \neg \phi$ then there are two cases: If $A_i \vdash \neg \phi$, then $A_i \vdash \psi$. Otherwise, $A_i \vdash \phi$ and also $A_i \vdash \neg \neg \phi$ which is the same assume
         $A_i \vdash \neg \psi$. If $\psi = \phi_1 \land \phi_2$ then there are two cases. If $A_i \vdash \phi_1$ and $A_i \vdash \phi_2$, then $A_i \vdash \phi_1 \land \phi_2$. Otherwise, $A_i \vdash \neg \phi_1$ or $A_i \vdash \neg \phi_2$. Then
         $A_i \vdash \neg (\phi_1 \land \phi_2)$.
-        Now assume $A_i \nvdash \psi$. So $A_i \vdash \neg \psi$. That also means $\Gamma_i' \vdash \neg \psi$. But because $\Gamma_i \subseteq \Gamma_i'$, and by the definition of $Gamma_i$, we conclude $Gamma_i' \vdash \psi$, which is a contradiction.
+        Now assume $A_i \nvdash \psi$. So $A_i \vdash \neg \psi$. That also means $\Gamma_i' \vdash \neg \psi$. But because $\Gamma_i \subseteq \Gamma_i'$, and by the definition of $Gamma_i$, we conclude $\Gamma_i' \vdash \psi$, which is a contradiction.
 
     \end{proof}
 
 \end{lemma}
 
-But the idea doesnt work yet. The constructed $T_a$ could contain not allowed atoms anymore.
+\begin{lemma}
+    Assume some atom $A_i$ that is $G_i$-allowed with $i > 0$. Then there exists some $A_{i-1}$ that is $G_{i-1}$-allowed and $A_{i-1} R_x A_i$
+
+    \begin{proof}
+        Let $A_{i-1}' = \{\psi \mid [a]\psi \in G_{i-1}\} \cup \{X \psi \mid \psi \in A_i\} \cup \{\neg X \psi \mid \neg \psi \in A_i\}$. Now let $\Gamma_{i-1} = A_{i-1}'  \cup \{\psi \in Bool(Cl(\varphi)) \mid G_{i-1} \vdash [a] \psi\}$ an extension.
+        We show $\Gamma_{i-1}$ is consistent. Assume it is not. Then there are some $\chi_1 ... \land ... \chi_n \land \psi_1 ... \land ... \psi_m \rightarrow \bot$ where for each $\psi_m$ we have $G_{i-1} \vdash [a]\psi_m$ and each $\chi_n$ are of them form $\bigcirc \phi$ or $\neg \bigcirc \phi$.
+        
+    \end{proof}
+\end{lemma}
+
 \begin{definition}
     
     Assume a global path $G_0G_1...$ and some $A_0A_1...$ that is allowed w.r.t. to their position.
