@@ -75,12 +75,8 @@
         Cl(\langle a \rangle \phi) &= \{\langle a \rangle \phi, \neg \langle a \rangle \phi\} \cup Cl(\phi)
     \end{aligned}
 \]
-\end{definition}
-
-
-
-\begin{definition}
-An atom $A$ is a subset of $Cl(\phi)$ such that it is consistent that means $A \nvdash \bot$ and 
+    
+A local consistent set $A$ is a subset of $Cl(\phi)$ such that it is consistent that means $A \nvdash \bot$ and 
 \[
 \begin{aligned}
 &\text{if } \psi \in Cl(\phi),
@@ -93,6 +89,15 @@ An atom $A$ is a subset of $Cl(\phi)$ such that it is consistent that means $A \
 &&\text{then  if } \phi_2 \in A \mbox{ then } \phi_1 U \phi_2 \in A
 \end{aligned}
 \]
+
+Next, we wish to extend our closure. Let $C_L = \{C \subseteq Cl(\varphi) \mid \text{C is local consistent set}\}$. We define
+$Cl(\varphi)^+ = Cl(\varphi) \cup \bigcup_{C \in C_L}\{\hat{C}, \neg \hat{C}, [a] \neg \hat{C}, \neg [a] \neg \hat{C}, \bigcirc [a] \neg \hat{C}, \neg \bigcirc [a] \neg \hat{C}\}$. An atom $A \subseteq Cl(\varphi)^+$is a local consistent set w.r.t. $Cl(\phi)^+$
+\end{definition}
+
+
+
+\begin{definition}
+
 \end{definition}
 
 \begin{lemma}
@@ -384,7 +389,7 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
             &\text{Induction axiom} \\
             &\vdash \zeta \rightarrow \Box \neg \psi_2
         \end{array}
-    \]y
+    \]
 
     It is left to show $*$. For that, assume some $C$ s.t. $(G_i,C) \in R^*_x$. For any $D$
     that is a successor of $C$, we also have $(G_i,D) \in R^*_x$. Furthermore, for any atom $C $ in $\Gamma$ we have $\psi_1, \psi_1 U \psi_2 $ and $\neg \psi_2 \in C$.
@@ -446,7 +451,26 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
 
     \begin{proof}
         Let $A_{i-1}' = \{\psi \mid [a]\psi \in G_{i-1}\} \cup \{X \psi \mid \psi \in A_i\} \cup \{\neg X \psi \mid \neg \psi \in A_i\}$. Now let $\Gamma_{i-1} = A_{i-1}'  \cup \{\psi \in Bool(Cl(\varphi)) \mid G_{i-1} \vdash [a] \psi\}$ an extension.
-        We show $\Gamma_{i-1}$ is consistent. Assume it is not. Then there are some $\chi_1 ... \land ... \chi_n \land \psi_1 ... \land ... \psi_m \rightarrow \bot$ where for each $\psi_m$ we have $G_{i-1} \vdash [a]\psi_m$ and each $\chi_n$ are of them form $\bigcirc \phi$ or $\neg \bigcirc \phi$.
+        We show $\Gamma_{i-1}$ is consistent. Assume it is not. Then there are some $\bigcirc \chi_1 ... \land ... \bigcirc\chi_n \land \psi_1 ... \land ... \psi_m \rightarrow \bot$ where for each $\psi_m$ we have $G_{i-1} \vdash [a]\psi_m$ and each $\chi_n \in A_i$. Let us abbreviate $\chi = \chi_1 \land ... \land \chi_n$.
+        Consider the following derivations: 
+
+        \[
+        \begin{array}{rll}
+            & \vdash \bigcirc \chi_1 \land ... \land \bigcirc \chi_n \land \psi_1 \land ... \psi_m \rightarrow \bot
+            &\text{Assumption} \\
+            & \vdash \psi_1 \land ... \land \psi_m \rightarrow \neg (\bigcirc \chi_1 \land ... \land \bigcirc \chi_n) \\
+            & \vdash \psi_1 \land ... \land \psi_m \rightarrow \neg \bigcirc \chi \\
+            & \vdash \psi_1 \land ... \land \psi_m \rightarrow \bigcirc \neg \chi \\
+            & \vdash [a](\psi_1 \land ... \land \psi_m \rightarrow \bigcirc \neg \chi) \\
+            & \vdash [a] (\psi_1 \land ... \land \psi_m) \rightarrow [a] \bigcirc \neg \chi \\
+            & \vdash [a] (\psi_1 \land ... \land \psi_m) \rightarrow \bigcirc [a] \neg \chi \\
+            & \vdash [a] (\psi_1 \land ... \land \psi_m) \rightarrow \bigcirc [a] \neg \hat{A_i} 
+            & \text {$\neg \chi \rightarrow \neg \hat{A_i}$} \\
+            G_{i-1} &\vdash \bigcirc [a] \neg \hat{A_i} \\
+            G_{i}  &\vdash [a] \neg \hat{A_i} \\
+            A_i &\vdash \neg \hat{A_i}
+        \end{array}
+        \]
         
     \end{proof}
 \end{lemma}
