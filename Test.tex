@@ -76,7 +76,7 @@
     \end{aligned}
 \]
     
-A local consistent set $A$ is a subset of $Cl(\phi)$ such that it is consistent that means $A \nvdash \bot$ and 
+A local atom is a local consistent set $A \subseteq Cl(\varphi)$ such that it is consistent that means $A \nvdash \bot$ and 
 \[
 \begin{aligned}
 &\text{if } \psi \in Cl(\phi),
@@ -91,7 +91,7 @@ A local consistent set $A$ is a subset of $Cl(\phi)$ such that it is consistent 
 \]
 
 Next, we wish to extend our closure. Let $C_L = \{C \subseteq Cl(\varphi) \mid \text{C is local consistent set}\}$. We define
-$Cl(\varphi)^+ = Cl(\varphi) \cup \bigcup_{C \in C_L}\{\hat{C}, \neg \hat{C}, [a] \neg \hat{C}, \neg [a] \neg \hat{C}, \bigcirc [a] \neg \hat{C}, \neg \bigcirc [a] \neg \hat{C}\}$. An atom $A \subseteq Cl(\varphi)^+$is a local consistent set w.r.t. $Cl(\phi)^+$
+$Cl(\varphi)^+ = Cl(\varphi) \cup \bigcup_{C \in C_L}\{\hat{C}, \neg \hat{C}, [a] \neg \hat{C}, \neg [a] \neg \hat{C}, \bigcirc [a] \neg \hat{C}, \neg \bigcirc [a] \neg \hat{C}\}$. A global atom $A \subseteq Cl(\varphi)^+$is a local consistent set w.r.t. $Cl(\varphi)^+$.
 \end{definition}
 
 
@@ -109,12 +109,12 @@ $Cl(\varphi)^+ = Cl(\varphi) \cup \bigcup_{C \in C_L}\{\hat{C}, \neg \hat{C}, [a
 \end{lemma}
 
 \begin{definition}
-    We say two atoms $A,B$ are in relation $R_x (A R_x B)$ iff
+    We say two atoms $A,B$ are in relation $R_L (A R_L B)$ iff
 
 \[
 \begin{aligned}
-&\text{if } X\psi \in Cl(\phi),
-&&\text{ then } X\psi \in A \text{ iff } \psi \in B, \\[2mm]
+&\text{if } \bigcirc \psi \in Cl(\phi),
+&&\text{ then } \bigcirc \psi \in A \text{ iff } \psi \in B, \\[2mm]
 &\text{if } \psi_1 U \psi_2 \in Cl(\phi),
 &&\text{ then if } \psi_1 U \psi_2, \neg\psi_2 \in A,
    \text{ then } \psi_1 U \psi_2 \in B, \\
@@ -122,6 +122,7 @@ $Cl(\varphi)^+ = Cl(\varphi) \cup \bigcup_{C \in C_L}\{\hat{C}, \neg \hat{C}, [a
    \text{ then } \psi_1 U \psi_2 \in A.
 \end{aligned}
 \]
+Additionally, we define a global relation $A R_G B$ with the same definition and where $\bigcirc \psi, \psi_1 U \psi_2 \in Cl(\varphi)^+$
 \end{definition}
 
 \begin{lemma}
@@ -427,11 +428,11 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
 \end{lemma}
 
 \begin{lemma}
-    Assume some $\langle a \rangle \phi \in G_i$. Then there is some atom $A_i$ that is $G_i$-allowed and $\phi \in A_i$.
+    Assume some $\langle a \rangle \phi \in G_i$. Then there is some local atom $A_i$ that is $G_i$-allowed and $\phi \in A_i$.
 
     \begin{proof}
-        First, it must be the case that ${\phi}$ is consistent. Otherwise, we could derive $\neg \phi$ and by $[a]$-generalization it follows $\vdash [a] \neg \phi$. Now we show $A_i' = \{\phi\} \cup \{\psi \mid [a] \psi \in G_i\}$ is consistent.
-        For that we show the extended set $\Gamma_i = \{\phi\} \cup \{\psi \in Bool(Cl(\varphi)) \mid \ G_i\vdash [a]\psi\}$ is consistent. Suppose it is not. Then there exists some $\psi_1,...,\psi_n$ with 
+        First, it must be the case that ${\phi}$ is consistent. Otherwise, we could derive $\neg \phi$ and by $[a]$-generalization it follows $\vdash [a] \neg \phi$. Now we show $A_i' = \{\phi\} \cup \{\psi \in Cl(\varphi) \mid [a] \psi \in G_i\}$ is consistent.
+        For that we show the extended set $\Gamma_i = \{\phi\} \cup \{\psi  \in Bool(Cl(\varphi)) \mid \ G_i\vdash [a]\psi\}$ is consistent. Suppose it is not. Then there exists some $\psi_1,...,\psi_n$ with 
         $\vdash \psi_1 \land ... \land \psi_n \rightarrow \bot$. There are two cases. If $\phi$ does not occur, then by [a]-generalization $\vdash [a](\psi_1 \land ... \land \psi_n \rightarrow \bot)$ and hence $G_i \vdash [a] \bot$ and by D-axiom $G_i \vdash \langle a \rangle \bot$.
         Otherwise $\phi$ occurs in the premise and we can derive $\vdash \psi_1 \land ... \land \psi_n \rightarrow \neg \phi$. But then we can conclude $G_i \vdash [a] \neg \phi$. That means $\Gamma_i'$ and also $A_i'$ are consistent because we have $A_i' \subseteq \Gamma_i$. \newline
         Next, we use Lindenbaum's Lemma to extend $\Gamma_i$ to a maximal consistent set say $\Gamma_i'$. We define our atom as $A_i = \Gamma_i' \cap Cl(\varphi)$. This set is consistent and and atom with $A_i' \subseteq A_i$. It is left to show that $A_i$ is $G_i$-allowed.
@@ -440,31 +441,32 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
         If $\psi = \neg \phi$ then there are two cases: If $A_i \vdash \neg \phi$, then $A_i \vdash \psi$. Otherwise, $A_i \vdash \phi$ and also $A_i \vdash \neg \neg \phi$ which is the same assume
         $A_i \vdash \neg \psi$. If $\psi = \phi_1 \land \phi_2$ then there are two cases. If $A_i \vdash \phi_1$ and $A_i \vdash \phi_2$, then $A_i \vdash \phi_1 \land \phi_2$. Otherwise, $A_i \vdash \neg \phi_1$ or $A_i \vdash \neg \phi_2$. Then
         $A_i \vdash \neg (\phi_1 \land \phi_2)$.
-        Now assume $A_i \nvdash \psi$. So $A_i \vdash \neg \psi$. That also means $\Gamma_i' \vdash \neg \psi$. But because $\Gamma_i \subseteq \Gamma_i'$, and by the definition of $Gamma_i$, we conclude $\Gamma_i' \vdash \psi$, which is a contradiction.
+        Now assume $A_i \nvdash \psi$. So $A_i \vdash \neg \psi$. That also means $\Gamma_i' \vdash \neg \psi$. But because $\Gamma_i \subseteq \Gamma_i'$, and by the definition of $\Gamma_i$, we conclude $\Gamma_i' \vdash \psi$, which is a contradiction.
 
     \end{proof}
 
 \end{lemma}
 
 \begin{lemma}
-    Assume some atom $A_i$ that is $G_i$-allowed with $i > 0$. Then there exists some $A_{i-1}$ that is $G_{i-1}$-allowed and $A_{i-1} R_x A_i$
+    Assume some local atom $A_i$ that is $G_i$-allowed with $i > 0$. Then there exists some $A_{i-1}$ that is $G_{i-1}$-allowed and $A_{i-1} R_x A_i$
 
     \begin{proof}
-        Let $A_{i-1}' = \{\psi \mid [a]\psi \in G_{i-1}\} \cup \{X \psi \mid \psi \in A_i\} \cup \{\neg X \psi \mid \neg \psi \in A_i\}$. Now let $\Gamma_{i-1} = A_{i-1}'  \cup \{\psi \in Bool(Cl(\varphi)) \mid G_{i-1} \vdash [a] \psi\}$ an extension.
-        We show $\Gamma_{i-1}$ is consistent. Assume it is not. Then there are some $\bigcirc \chi_1 ... \land ... \bigcirc\chi_n \land \psi_1 ... \land ... \psi_m \rightarrow \bot$ where for each $\psi_m$ we have $G_{i-1} \vdash [a]\psi_m$ and each $\chi_n \in A_i$. Let us abbreviate $\chi = \chi_1 \land ... \land \chi_n$.
+        Let $A_{i-1}' = \{\psi \in Cl(\varphi) \mid [a]\psi \in G_{i-1}\} \cup \{X \psi \mid \psi \in A_i\} \cup \{\neg X \psi \mid \neg \psi \in A_i\}$. Now let $\Gamma_{i-1} = A_{i-1}'  \cup \{\psi \in Bool(Cl(\varphi)) \mid G_{i-1} \vdash [a] \psi\}$ an extension.
+        We show $\Gamma_{i-1}$ is consistent. Assume it is not. Then there are some $\bigcirc \chi_1 ... \land ... \bigcirc\chi_n \land \psi_1 ... \land ... \psi_m \rightarrow \bot$ where for each $\psi_m$ we have $G_{i-1} \vdash [a]\psi_m$ and each $\chi_n \in A_i$. Let us abbreviate $\chi = \chi_1 \land ... \land \chi_n$
+        and $\psi = \psi_1 \land ... \land \psi_m$
         Consider the following derivations: 
 
         \[
         \begin{array}{rll}
             & \vdash \bigcirc \chi_1 \land ... \land \bigcirc \chi_n \land \psi_1 \land ... \psi_m \rightarrow \bot
             &\text{Assumption} \\
-            & \vdash \psi_1 \land ... \land \psi_m \rightarrow \neg (\bigcirc \chi_1 \land ... \land \bigcirc \chi_n) \\
-            & \vdash \psi_1 \land ... \land \psi_m \rightarrow \neg \bigcirc \chi \\
-            & \vdash \psi_1 \land ... \land \psi_m \rightarrow \bigcirc \neg \chi \\
-            & \vdash [a](\psi_1 \land ... \land \psi_m \rightarrow \bigcirc \neg \chi) \\
-            & \vdash [a] (\psi_1 \land ... \land \psi_m) \rightarrow [a] \bigcirc \neg \chi \\
-            & \vdash [a] (\psi_1 \land ... \land \psi_m) \rightarrow \bigcirc [a] \neg \chi \\
-            & \vdash [a] (\psi_1 \land ... \land \psi_m) \rightarrow \bigcirc [a] \neg \hat{A_i} 
+            & \vdash \psi \rightarrow \neg (\bigcirc \chi_1 \land ... \land \bigcirc \chi_n) \\
+            & \vdash \psi\rightarrow \neg \bigcirc \chi \\
+            & \vdash \psi \rightarrow \bigcirc \neg \chi \\
+            & \vdash [a](\psi \rightarrow \bigcirc \neg \chi) \\
+            & \vdash [a] \psi \rightarrow [a] \bigcirc \neg \chi \\
+            & \vdash [a] \psi \rightarrow \bigcirc [a] \neg \chi \\
+            & \vdash [a] \psi \rightarrow \bigcirc [a] \neg \hat{A_i} 
             & \text {$\neg \chi \rightarrow \neg \hat{A_i}$} \\
             G_{i-1} &\vdash \bigcirc [a] \neg \hat{A_i} \\
             G_{i}  &\vdash [a] \neg \hat{A_i} \\
@@ -472,6 +474,8 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
         \end{array}
         \]
         
+        By Lindenbaum, we extend $\Gamma_{i-1}$ to an maximal consistent set say $\Gamma_{i-1}'$. Then our local atom $A_{i-1}$ is defined as 
+        $A_{i-1} = \Gamma_{i-1}' \cap Cl(\varphi)$. Next we show $A_{i-1} R_L A_i$. Pick some, $\bigcirc \psi \in Cl(\varphi)$.
     \end{proof}
 \end{lemma}
 
