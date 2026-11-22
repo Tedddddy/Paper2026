@@ -475,7 +475,12 @@ is at most $2^{Cl(\phi)}$ large. For an atom $C$ we denote $\hat{C} = \bigwedge_
         \]
         
         By Lindenbaum, we extend $\Gamma_{i-1}$ to an maximal consistent set say $\Gamma_{i-1}'$. Then our local atom $A_{i-1}$ is defined as 
-        $A_{i-1} = \Gamma_{i-1}' \cap Cl(\varphi)$. Next we show $A_{i-1} R_L A_i$. Pick some, $\bigcirc \psi \in Cl(\varphi)$.
+        $A_{i-1} = \Gamma_{i-1}' \cap Cl(\varphi)$. Next we show $A_{i-1} R_L A_i$. The $\bigcirc \psi \in Cl(\varphi)$ is obvious. Assume $\psi_1 U \psi_2 \in A_{i-1}$. By the unraveling of until, we have
+        $A_{i-1} \vdash \psi_1 \land \bigcirc (\psi_1 U \psi_2)$. Because $\psi_1 U \psi_2 \in Cl(\varphi)$, it must be the case that $\psi_1 U \psi_2 \in A_i$. Last, if $\psi_1 U \psi_2 \in A_{i-1}$ and $\psi_1 \in A_i$, then
+        by the fact that $\bigcirc \psi_1 U \psi_2  \in Cl(\varphi)$, it follows $\bigcirc \psi_1 U \psi_2 \in A_{i-1}$. Hence $\psi_1 U \psi_2 \in A$. \newline 
+        $A_{i-1}$ is also $G_{i-1}$-allowed. Assume $G_{i-1} \vdash \psi \in Bool(Cl(\varphi))$. Assume, $A_{i-1} \nvdash \psi$. That means $A_{i-1} \vdash \neg \psi$. But $A_{i-1} \subseteq \Gamma_{i-1}'$, so $\Gamma_{i-1} \vdash \neg \psi$.
+        But also, $\psi \in \Gamma_{i-1}$ and $\Gamma_{i-1} \subseteq \Gamma_{i-1}'$. So $\Gamma_{i-1}' \vdash \psi$ and $\Gamma_{i-1}' \vdash \neg \psi$. Hence, a contradiction.
+
     \end{proof}
 \end{lemma}
 
